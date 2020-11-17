@@ -1,0 +1,80 @@
+﻿<style>
+
+</style>
+
+<div id="announceWindow" style="padding:20px;" hidden>
+    <h3 style="margin-top:0px"></h3>
+    <div id="announceWindowMain">
+
+    </div>
+    <br>
+    <div class="window-footer">
+        <button class="k-button k-button-ok" onclick="closeAnnounceWindow()">Close</button> &nbsp;
+        <div style="display:inline-block" id="panelNoMoreShow">
+            <input type="checkbox" id="cbNoMoreShow" class="k-checkbox">
+            <label class="k-checkbox-label" for="cbNoMoreShow"> &nbsp;不要再出現此視窗</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    var announceWindow;
+    function initAnnounceWindow() {
+        announceWindow = $("#announceWindow").kendoWindow({
+            width: "70%",
+            title: "公告",
+            visible: false,
+            modal: true,
+            resize: true,
+        }).data("kendoWindow");
+    }
+
+    // noMoreShow: 出現checkbox: 不要再出現此視窗
+    function showAnnounceWindow(title, message, cookieKey, noMoreShow) {
+        $("#cbNoMoreShow").prop("checked", false);
+        $("#panelNoMoreShow").attr("name", "");
+        $("#panelNoMoreShow").hide();
+
+        if (cookieKey) {
+            // cookiekey is true && noMoreShow==false => close and set cookie
+            // cookiekey is true && noMoreShow==true => close and if check set cookie
+            $("#panelNoMoreShow").attr("name", cookieKey);
+        }
+        if (noMoreShow) {
+            $("#panelNoMoreShow").show();
+        }
+
+        var cook = getCookie(cookieKey);
+        if (!cookieKey || !cook) {
+            $("#announceWindowMain").html(message);
+            $("#announceWindowMain").prev().html(title);
+            announceWindow.center().open();
+        }
+    }
+
+    function closeAnnounceWindow() {
+        var setCookieFlag = false;
+        var cookieKey = $("#panelNoMoreShow").attr("name");
+
+        if ($("#panelNoMoreShow").css("display") == "none") {
+
+        } else {
+            if ($("#cbNoMoreShow").prop("checked"))
+                setCookieFlag = true;
+        }
+
+
+        if (setCookieFlag) {
+            var cook = getCookie(cookieKey);
+            if (cookieKey && !cook) {
+                // 永不過期
+                document.cookie = cookieKey + "=true" + "; expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/";
+            }
+        }
+
+        announceWindow.close();
+    }
+
+
+    initAnnounceWindow();
+</script>

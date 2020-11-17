@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/kendo")
+    <script src="~/Scripts/custom/global.js"></script>
+    @Styles.Render("~/Content/css")
+
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <style>
+        .footer {
+            position: fixed;
+        }
+    </style>
+</head>
+<body class="body_register">
+    <div class="container-fluid">
+        <div id="content-body">
+            <center>
+                @RenderBody()
+            </center>
+        </div>
+
+        <footer class="footer">
+            <img src="~/Content/images/rtit/RTK_logo_footer.png" width="120px" /> ©2018 Realtek Semiconductor Corp. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

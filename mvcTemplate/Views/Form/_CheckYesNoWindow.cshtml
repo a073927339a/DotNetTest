@@ -1,0 +1,45 @@
+﻿<div id="checkYesNoWindow" style="display:none">
+    <div id="checkYesNoMain" style="padding:10px;"></div>
+    <div style="float:right">
+        <button class="k-button k-button-ok window-footer-btn" onclick="checkYesNoWindowClickYesEvent()">Yes</button>
+        <button class="k-button k-button-cancel window-footer-btn" onclick="checkYesNoWindowClickNoEvent()">No</button>
+    </div>
+</div>
+
+
+<script>
+    var checkYesNoWindow;
+    var checkYesNoWindowClickYesCallback;
+    var checkYesNoWindowClickNoCallback;
+    function initCheckYesNoWindow() {
+        checkYesNoWindow = $("#checkYesNoWindow").kendoWindow({
+            width: "300px",
+            title: "",
+            visible: false,
+            modal: true
+        }).data("kendoWindow");
+    }
+
+    function showCheckYesNo(title, message, yes_callback, no_callback) {
+        checkYesNoWindow.title(title);
+        $("#checkYesNoMain").html(message);
+        checkYesNoWindowClickYesCallback = yes_callback;
+        checkYesNoWindowClickNoCallback = no_callback;
+        checkYesNoWindow.center().open();
+    }
+
+    function checkYesNoWindowClickYesEvent() {
+        if (checkYesNoWindowClickYesCallback != null)
+            checkYesNoWindowClickYesCallback();
+        checkYesNoWindow.close();
+    }
+
+    function checkYesNoWindowClickNoEvent() {
+        if (checkYesNoWindowClickNoCallback != null)
+            checkYesNoWindowClickNoCallback();
+        checkYesNoWindow.close();
+    }
+
+    initCheckYesNoWindow();
+
+</script>

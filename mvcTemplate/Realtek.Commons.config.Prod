@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Big5" ?>
+<DbConfig>
+  <Config>
+    <SysId>HT</SysId>
+    <Server>172.21.1.68</Server>
+    <UserId>HTUSER</UserId>
+    <Password>D108348D3273A115</Password>
+    <Database>htbas</Database>
+    <ExtArguments>connection timeout=60;Application Name=Hunter;</ExtArguments>
+  </Config>
+  <Config>
+    <SysId>HUNTER</SysId>
+    <Server>RTITOADB</Server>
+    <UserId>htuser</UserId>
+    <Password>5C32CDACD5A428FEDF53AF3567CBEE4F</Password>
+    <Database>htbas</Database>
+    <ExtArguments>connection timeout=60;Application Name=Hunter;</ExtArguments>
+  </Config>
+  
+   <Config>
+    <SysId>KWSEAI</SysId>
+    <Server>RTITEAI</Server>
+    <UserId>hunter_user</UserId>
+    <Password>E5C48B4BB768BEC452C4C2B7531984DA</Password>
+    <Database>KWSEAI</Database>
+    <ExtArguments>connection timeout=60;Application Name=Hunter;</ExtArguments>
+  </Config>
+</DbConfig>
+
+
+

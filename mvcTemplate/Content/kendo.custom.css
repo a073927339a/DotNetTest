@@ -1,0 +1,203 @@
+
+/*修正radio button歪掉的問題*/
+.k-radio-label:before {
+    border-color: #c4c4c4;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-width: 1px;
+    box-sizing: unset;
+    -webkit-box-sizing: unset;
+}
+
+.k-button {
+    line-height: 1.9em;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.k-multiselect-wrap > .k-i-close {
+    top: 11px;
+}
+
+.k-multiselect-wrap li {
+    line-height: 1.9em;
+}
+
+.k-multiselect-wrap {
+    border-color: #ccc;
+}
+
+.k-header.k-grid-toolbar > a[role='button'] {
+    background-color: #03a9f4;
+}
+
+.k-grid-header .k-header .k-link, .k-grid-header .k-link, .k-grid-header .k-link:link {
+    color: #607D8B;
+}
+
+.k-loading-mask {
+    z-index: 2000;
+}
+
+span.k-loading-text {
+    text-indent: unset;
+    top: 55%;
+    left: 40%;
+    margin-left: 40px;
+    font-weight: 600;
+}
+
+.k-notification-button .k-notification-wrap {
+    white-space: pre;
+}
+
+.k-window-titlebar.k-header {
+    background-color: #0D4771;
+    border: none;
+}
+
+.k-widget.k-window {
+    border: none;
+}
+
+.k-grid .k-header .k-button {
+    background-color: #6E6E6E;
+    border-color: #6E6E6E;
+}
+
+.k-grid td {
+    border-width: 0 0 1px 0px;
+    padding: .3em .6em;
+}
+
+.k-notification-wrap > span.k-icon.k-i-success {
+    vertical-align: text-bottom;
+}
+
+.k-dropdown .k-input, .k-datepicker .k-input {
+    background-color: white;
+}
+
+.k-dropdown .k-state-default {
+    border-color: #DDD;
+}
+
+.k-button-ok {
+    background-color: #0D4771;
+    color: white;
+    border-color: #0D4771;
+    padding: 5px 15px;
+}
+
+.k-button-cancel {
+    background-color: #606060;
+    color: white;
+    border-color: #606060;
+    padding: 5px 15px;
+}
+
+.k-header {
+    background-color: #E4E4E4;
+}
+
+.k-loading-image {
+    height: 100%;
+}
+
+.k-calendar td.k-state-selected, .k-calendar td.k-state-focused, .k-calendar td.k-state-selected.k-state-focused {
+    background-color: #3f51b5;
+}
+
+.k-button[disabled], .k-button[disabled]:hover {
+    background-color: #2f3a4e;
+    border-color: #999;
+    color: #999;
+}
+
+.k-grid-header .k-header {
+    color: #444;
+}
+
+.k-multiselect-wrap > ul > .k-button {
+    background-color: #C6C617;
+    color: #000000;
+    border-radius: 13px;
+}
+
+.k-state-focused > a.k-link {
+    color: white;
+}
+
+.k-button.k-state-hover, .k-button:hover, .k-button:focus, .k-button:active:focus {
+    color: #fafafa;
+    border-color: #2371a9;
+    background-color: #2371a9;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2), 0 2px 3px rgba(0,0,0,.05);
+}
+
+.k-button-cancel:hover, .k-button-cancel:active, .k-button-cancel:active:focus, .k-button-cancel:focus {
+    background-color: #b1b1b1;
+    border-color: #b1b1b1;
+}
+
+.k-button.k-primary {
+    background-color: #c1c1c1;
+    border-top-color: #c1c1c1;
+}
+
+.k-grid-filter.k-state-active {
+    background-color: #abb7f9;
+}
+
+.k-widget.k-window.k-dialog.k-alert .k-button {
+    background-color: #3F51B5;
+    color: white;
+}
+
+.k-widget.k-listview.k-selectable {
+    padding: 5px;
+}
+
+.k-checkbox:checked + .k-checkbox-label:before {
+    background-color: #0D4771;
+}
+
+.k-textbox {
+    border-color: #ccc;
+}
+
+.k-header.k-grid-toolbar {
+    padding: 10px;
+    color: #444;
+}
+
+a.link {
+    text-decoration: underline;
+    color: #0D4771;
+    cursor: pointer;
+}
+
+    a.link:hover {
+        color: #788274;
+    }
+
+.k-checkbox-label, .k-radio-label {
+    padding-left: 20px;
+}
+
+input.checkbox.toolbar-cb {
+    margin-right: 5px;
+}
+
+#grid tbody > tr.k-alt {
+    background-color: #F5F5F5;
+}
+
+#grid tbody > tr:hover {
+    opacity: 0.8;
+}
+
+.k-footer-template > td {
+    background-color: #2F6C84;
+    color: #D9E021;
+}

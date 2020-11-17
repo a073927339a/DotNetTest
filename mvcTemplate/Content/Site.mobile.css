@@ -1,0 +1,134 @@
+@media (min-width: 768px) {
+
+    .login-form {
+        width: 500px;
+        max-width: 600px;
+        max-height: 100%;
+        position: relative;
+        /* padding-top: 40px; */
+        padding-bottom: 50px;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    #page-wrapper {
+        padding: 0 20px;
+        border-left: 1px solid #e7e7e7;
+        margin-top: -20px;
+        padding-top: 20px;
+    }
+
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 180px;
+        margin-top: 60px;
+        -webkit-transition: margin-left 0.3s; /* Safari */
+        transition: margin-left 0.3s;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    ul.timeline:before {
+        left: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(10%);
+        width: -moz-calc(10%);
+        width: -webkit-calc(10%);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        top: 16px;
+        left: 15px;
+        margin-left: 0;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+        ul.timeline > li > .timeline-panel:before {
+            right: auto;
+            left: -15px;
+            border-right-width: 15px;
+            border-left-width: 0;
+        }
+
+        ul.timeline > li > .timeline-panel:after {
+            right: auto;
+            left: -14px;
+            border-right-width: 14px;
+            border-left-width: 0;
+        }
+}
+
+/*大螢幕*/
+@media (min-width: 1600px) {
+    #page-wrapper {
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+        margin-top: -20px;
+        padding-top: 20px;
+    }
+
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 334px;
+        margin-top: 60px;
+    }
+}
+
+/*手機*/
+@media (max-width: 480px) {
+    .page-title {
+        margin: 0px;
+    }
+
+    .rwd-table td:before {
+        display: none;
+    }
+
+    .rwd-table th, .rwd-table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+    }
+
+        .rwd-table th:first-child,
+        .rwd-table td:first-child {
+            padding-left: 0;
+        }
+
+        .rwd-table th:last-child,
+        .rwd-table td:last-child {
+            padding-right: 0;
+        }
+
+    .rwd-table th,
+    .rwd-table td {
+        padding: 1em !important;
+    }
+
+    #nav_announcement{
+        line-height: normal;
+    }
+}
+
+/*小螢幕手機*/
+@media only screen and (max-width: 320px) {
+    img.rtk-logo {
+        padding-top: 20px;
+        padding-left: 50px;
+        transition: all 0.4s;
+    }
+}

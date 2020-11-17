@@ -1,0 +1,51 @@
+﻿<div class="toast-item toast-type-success" id="divResultSuccess" style="display:none">
+    <div class="toast-item-image toast-item-image-success">
+    </div>
+    <p id="pSuccess"></p>
+</div>
+
+<div class="toast-item toast-type-error" id="divResultError" style="display:none">
+    <div class="toast-item-image toast-item-image-error">
+    </div>
+    <p id="pError"></p>
+</div>
+
+<div class="toast-item toast-type-warning" id="divResultWarning" style="display:none">
+    <div class="toast-item-image toast-item-image-warning">
+    </div>
+    <p id="pWarn"></p>
+</div>
+
+<div class="toast-item toast-type-notice" id="divResultInfo" style="display:none">
+    <div class="toast-item-image toast-item-image-notice">
+    </div>
+    <p id="pInfo"></p>
+</div>
+
+<script>
+    function hideMsg() {
+        $("#divResultSuccess").hide();
+        $("#divResultError").hide();
+        $("#divResultWarn").hide();
+        $("#divResultInfo").hide();
+    }
+
+    function showMsg(sts, msg) {
+        hideMsg();
+
+        sts = sts.toUpperCase();
+        if (sts == "SUCCESS") {
+            $("#divResultSuccess").show();
+            $("#pSuccess").html(msg);
+        } else if (sts == "ERROR") {
+            $("#divResultError").show();
+            $("#pError").html(msg);
+        } else if (sts == "WARN") {
+            $("#divResultWarning").show();
+            $("#pWarn").html(msg);
+        } else if (sts == "INFO") {
+            $("#divResultInfo").show();
+            $("#pInfo").html(msg);
+        }
+    }
+</script>

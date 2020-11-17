@@ -1,0 +1,63 @@
+html {
+    height: 100%;
+}
+
+.login-form-label {
+    text-align: left;
+    font-size: 18px;
+    color: white;
+}
+
+img.rtk-logo {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+body.body_login {
+    min-height: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    /* align-items: center; */
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    /* justify-content: center; */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    background: -webkit-linear-gradient(180deg, #0D4771 0%, #134A71 10%, #255471 25%, #436572 42%, #6D7C74 60%, #A29975 80%, #DFBB78 100%) 0% 0% no-repeat padding-box;
+    background: -o-linear-gradient(180deg, #0D4771 0%, #134A71 10%, #255471 25%, #436572 42%, #6D7C74 60%, #A29975 80%, #DFBB78 100%) 0% 0% no-repeat padding-box;
+    background: -moz-linear-gradient(180deg, #0D4771 0%, #134A71 10%, #255471 25%, #436572 42%, #6D7C74 60%, #A29975 80%, #DFBB78 100%) 0% 0% no-repeat padding-box;
+    background: linear-gradient(180deg, #0D4771 0%, #134A71 10%, #255471 25%, #436572 42%, #6D7C74 60%, #A29975 80%, #DFBB78 100%) 0% 0% no-repeat padding-box;
+    font-family: "微軟正黑體", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.lf--input {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.lf--submit.lf-login-submit {
+    width: 100%;
+    background-color: #E0D041;
+    border-radius: 5px;
+    color: #1A1A1A;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.flex-row {
+    margin-bottom: 10px;
+}
+
+.footer-login {
+    color: white;
+    position: fixed;
+    bottom: 30px;
+}
+
+#a-forget-pass{
+    float:right;
+    font-style: italic;
+}

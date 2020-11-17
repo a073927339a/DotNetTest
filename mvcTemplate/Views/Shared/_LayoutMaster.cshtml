@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>人力統計平台</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/polyfill.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom/sb-admin-2.js"></script>
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/favicon.ico" type="image/ico" />
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/metisMenu")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/fullcalendar")
+    @Styles.Render("~/Content/css")
+
+
+    <script src="~/Scripts/custom/global.js"></script>
+    <script src="~/Scripts/custom/data.js"></script>
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//matomo.realtek.com/";
+            _paq.push(['setTrackerUrl', u + 'piwik.php']);
+            _paq.push(['setSiteId', '9']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button id="btn_menu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                </button>
+                <a class="navbar-brand" href="/Report/Upload">
+                    <img src="~/Content/images/RTK_logo.png" style="margin-top: -20px;">
+                    <div style="width: 1px; height:25px;background-color:#FFF;display: inline-block;margin-top: 20px"></div> &nbsp;&nbsp;&nbsp;<img src="~/Content/images/logo_banner.png">
+                </a>
+                <div id="nav_announcement">@ViewBag.Announcement @ViewBag.ServerType</div>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                @{Html.RenderAction("LoginPartial", "Form");}
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation" style="margin-left:-334px">
+                <div class="sidebar-nav">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="/Report/Search">Human Resource Report (H01)</a>
+                            <a href="/Report/Upload">Report Upload (H02)</a>
+                            <a href="/Report/Filter">My Favorite Filters (H03)</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            @RenderBody()
+            <div class="footer" style="position:static;font-size: 12px;margin-top: 10px;">
+                您的意見回饋請聯繫：<span id="adminContact"></span> <a id="adminContactMail" href="mailto:vinlykuo@realtek.com"></a>
+            </div>
+        </div>
+
+        <div id="systemNotification"></div>
+        <!-- /#page-wrapper -->
+
+
+    </div>
+    <!-- /#wrapper -->
+    <script>
+        // 設定所有的kendo combox focus時就要顯示dropdownlist
+        // 須等頁面render完，所以此script須放在最下面的位置
+        var SessionUserRole = "@ViewBag.UserRole";
+        setTimeout(function () {
+            $("[data-role=combobox]").each(function () {
+                var widget = $(this).getKendoComboBox();
+                widget.input.on("focus", function () {
+                    widget.open();
+                });
+            });
+
+        }, 1000);
+
+        var ServerType = '@ViewBag.ServerType';
+
+        $(document).ready(function () {
+            $("#side-menu li>a").each(function (i, a) {
+                if (window.location.pathname == $(a).attr("href")) {
+                    $(a).addClass("active");
+                }
+            });
+
+            if ($("#side-menu li>a.active").length == 0) {
+                $($("#side-menu li>a")[1]).attr("class", "active");
+            }
+        });
+
+        var originalSidebarWidth = "0";
+        if ($("html").width() > 768) {
+            originalSidebarWidth = "180"
+        }
+        if ($("html").width() > 1600) {
+            originalSidebarWidth = "334"
+        }
+
+        $("#btn_menu").click(function () {
+            var mar = $("#page-wrapper").css("margin-left").replace("px", "");
+            if (mar > 0) {
+                originalSidebarWidth = mar;
+                $("#page-wrapper").css("margin-left", "0");
+                $(".sidebar").css("margin-left", -originalSidebarWidth + "px");
+
+
+            } else {
+                $("#page-wrapper").css("margin-left", originalSidebarWidth + "px");
+                $(".sidebar").css("margin-left", "0px");
+            }
+        });
+
+        var adminMain = '@ViewBag.AdminContact';
+        if (adminMain != "") {
+            $("#adminContact").html(adminMain.split(" ")[0]);
+            $("#adminContactMail").attr("href", "mailto:" + adminMain.split(" ")[1]);
+            $("#adminContactMail").html(adminMain.split(" ")[1]);
+        }
+
+        // UI Error Handler
+        window.onerror = function (errorMessage, scriptURI, lineNumber, columnNumber, errorObj) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '@Url.Action("GuiLogError", "Report")',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: JSON.stringify({"error": errorObj.stack}),
+                success: function (result) {
+                },
+                error: function (result) {
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

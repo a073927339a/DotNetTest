@@ -1,0 +1,140 @@
+﻿@{
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/kendo")
+    <script src="~/Scripts/custom/global.js"></script>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/login.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/favicon.ico" type="image/ico" />
+
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+</head>
+<style>
+    .toast-item p {
+        padding: .6em 0em;
+    }
+
+    #content-body {
+        padding-top: 230px;
+    }
+
+    @@media screen and (max-width: 800px) {
+        #content-body {
+            margin-top: 100px;
+        }
+    }
+</style>
+
+<body class="body_login">
+    <div style="position:absolute;left:0px">
+        <a href=""><img class="rtk-logo" src="@Url.Content("/Content/images/RTK_logo.png")" /></a>
+    </div>
+    <div class="container-fluid" id="content-body">
+        <div>
+            <center>
+                <!-- 不知道為什麼自動置中還會歪歪的，補上margin-left -->
+                @*<img src="~/Content/images/logo.png" class="small-logo" style="width:333px" />*@
+                <br>
+                <br>
+                @*<div style="color:white;font-size: 16px">Human Resources e-Management</div>*@
+                <div style="color:white;font-size: 16px">mvcTemplate</div>
+                <form class='login-form'>
+                    @{Html.RenderAction("RenderMessage", "Form");}
+                    <br>
+                    <div class="login-form-label">ACCOUNT</div>
+                    <div class="flex-row">
+                        <input id="textEmail" class='lf--input' type='text' autofocus placeholder="請輸入簽核系統帳號">
+                    </div>
+                    <div class="login-form-label">PASSWORD</div>
+                    <div class="flex-row">
+                        <input id="textPassword" class='lf--input' type='password' placeholder="請輸入簽核系統密碼">
+                    </div>
+                    <a id="a-forget-pass" href="http://rtitldap.realtek.com.tw//RTForgetPass.nsf/FmForgetPassword?OpenForm" target="_blank">Forget Password ?</a>
+                    <input id="buttonLogin" class='lf--submit lf-login-submit' type='button' value='LOGIN'>
+                    <div class="flex-row" style="display:inline-block;color:#FFF;text-align:center;width:100%"> </div>
+                </form>
+
+            </center>
+        </div>
+
+        <footer class="footer footer-login">
+            ©2019 Realtek Semiconductor Corp. All rights reserved.
+        </footer>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(document).keypress(function (e) {
+        if (e.keyCode == 13) {
+            if ($("#textEmail").is(":focus")) {    // get focus
+                $('#textPassword').focus();
+            }
+            else if ($("#textPassword").is(":focus")) {
+                $("#buttonLogin").click();
+            }
+        }
+    });
+
+    var returnFrom = "@ViewBag.ReturnFrom";
+    if (returnFrom == "ActivateAccount") {
+        showMsg("SUCCESS", "Account has been activated. Please login again.");
+    } else if (returnFrom == "ResetPassword") {
+        showMsg("SUCCESS", "Password has been reset. Please login again.");
+    } else if (returnFrom == "ErrorCode") {
+        showMsg("SUCCESS", "Verification code is incorrect. Please click Forgot Password and get verification code again.");
+    }
+
+    $("#buttonLogin").click(function () {
+        var account = $("#textEmail").val().trim();
+        var password = $("#textPassword").val().trim();
+
+        if (account == "") {
+            showMsg("ERROR", "Account is required.");
+        } else if (password == "") {
+            showMsg("ERROR", "Password is required.");
+        } else {
+
+            showLoading($("body"), "Loading");
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Action("CheckAccount", "Home")',
+                data: { account: account, password: password },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.Pass) {
+                        // Home會自動跳轉
+                        var url = '@Url.Action("Index", "Home")';
+                        window.location.href = url;
+                    } else {
+                        hideLoading($("body"));
+                        showMsg("ERROR", response.Message);
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+<style>
+    p#pSuccess {
+        color: white;
+    }
+</style>
