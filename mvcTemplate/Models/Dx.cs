@@ -10,7 +10,7 @@ namespace Realtek.HRM.Models
     {
         public string Git()
         {
-            return "123123";
+            return "Azure";
         }
         
     }
