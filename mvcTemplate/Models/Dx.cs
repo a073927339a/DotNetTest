@@ -10,7 +10,7 @@ namespace Realtek.HRM.Models
     {
         public string Git()
         {
-            return "35asd351a3sd";
+            return "asdasdasasd";
         }
         
     }
